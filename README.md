@@ -1,39 +1,37 @@
-# 🚗 Used Car Price Prediction Engine
+# Used Car Price Prediction Engine
 
-## 📌 Project Overview
-Yeh project ek end-to-end **Machine Learning Development Life-cycle (MLDL)** implementation hai jo used car prices predict karta hai. Is project ka main focus "black-box" libraries ke bajaye **Mathematical Formulation**, rigorous **Regression Analysis**, aur custom **Optimization** techniques par hai.
+## Project Overview
+This repository contains an end-to-end implementation of the **Machine Learning Development Life-cycle (MLDL)** focused on predicting the market value of pre-owned vehicles. The primary objective was to move beyond "black-box" implementations and focus on **Mathematical Formulation**, rigorous **Regression Diagnostics**, and custom **Optimization** strategies.
 
-## 🛠️ Technical Implementation & Highlights
+## Technical Implementation & Highlights
 
-### 1. Data Cleaning & Sanitization
-* **Duplicate Management**: 763 duplicate entries ko identify aur remove kiya gaya taaki model bias se bacha ja sake aur **Regression Analysis** ki integrity bani rahe.
-* **Handling Challenges**: **Non-representative data** aur potential **Outliers** ko address kiya gaya (jaise high `km_driven` aur `car_age`), jo **Simple Linear Regression** line ko skew kar sakte hain.
+### 1. Data Cleaning & Integrity
+* **Deduplication**: Identified and removed 763 duplicate entries to prevent data leakage and maintain the statistical integrity of the regression analysis.
+* **Outlier Mitigation**: Addressed non-representative data points, such as extreme mileage and vehicle age, which would otherwise skew the Ordinary Least Squares (OLS) estimation.
 
-### 2. Advanced Feature Engineering
-* **High-Cardinality Transformation**: 1,491 unique car names ko process karke "Brand" feature extract kiya gaya, jisse dimensionality kam hui aur **Overfitting** prevent hui.
-* **Log Transformation**: Target variable (`selling_price`) par logarithmic scaling apply ki gayi taaki **Normality of Residuals** ki assumption satisfy ho sake.
-* **Derived Features**: `car_age` aur `usage_intensity` (km per year) jaise **Relevant features** engineer kiye gaye model ki accuracy sudharne ke liye.
+### 2. Feature Engineering & Statistical Transformation
+* **Dimensionality Management**: Processed 1,491 unique car models to extract "Brand" as a primary feature, reducing model complexity and mitigating the risk of overfitting.
+* **Logarithmic Transformation**: Applied a log transformation to the target variable (`selling_price`) to satisfy the **Normality of Residuals** and address potential heteroscedasticity—a critical Gauss-Markov assumption.
+* **Feature Synthesis**: Engineered derived variables including `car_age` and `usage_intensity` (annual kilometers driven) to more accurately model vehicle depreciation.
 
 ### 3. Mathematical Foundations & Optimization
-* **Manual Implementation**: **Linear Regression model from scratch** build kiya gaya taaki error function ki **Intuition** aur **Mathematical Formulation** show ki ja sake.
-* **Gradient Descent**: **Batch** aur **Stochastic Gradient Descent (SGD)** implement kiya gaya **Loss Function** ko minimize karne ke liye.
-* **Learning Dynamics**: **Learning Rate** ka effect aur different optimization techniques ke beech **Time comparison** ko analyze kiya gaya.
+* **Manual Implementation**: Developed a Linear Regression model from first principles to demonstrate the mathematical intuition behind error minimization and matrix operations.
+* **Gradient Descent Algorithms**: Implemented both **Batch** and **Stochastic Gradient Descent (SGD)** to optimize the Loss Function.
+* **Analysis of Dynamics**: Evaluated the impact of **Learning Rates** and conducted a time-complexity comparison between different optimization solvers.
 
 ### 4. Regression Analysis & Model Diagnostics
-* **Multicollinearity Detection**: **Variance Inflation Factor (VIF)** aur **Correlation** matrices ka use karke redundant predictors ko remove kiya gaya.
-* **Assumptions Validation**: **Linearity**, **Homoscedasticity**, aur **No Autocorrelation** ke liye formal checks kiye gaye.
-* **Feature Selection**: **Filter methods** (Correlation, ANOVA) aur **Wrapper methods** (Sequential Backward Elimination) ka use karke optimal feature set select kiya gaya.
+* **Multicollinearity Detection**: Utilized **Variance Inflation Factor (VIF)** and correlation matrices to identify and eliminate redundant predictors.
+* **Assumption Validation**: Conducted formal testing for **Linearity**, **Homoscedasticity**, and **Independence of Errors** (No Autocorrelation).
+* **Feature Selection**: Employed a hybrid strategy using **Filter methods** (Correlation, ANOVA) and **Wrapper methods** (Sequential Backward Elimination) to derive the most parsimonious model.
 
-## 📊 Evaluation Metrics
-Model performance ko in standard **Regression Metrics** par measure kiya gaya:
+## Evaluation Metrics
+Model performance was benchmarked using standard regression metrics to ensure generalized predictive power:
 * **MAE** (Mean Absolute Error)
-* **MSE** (Mean Squared Error)
-* **RMSE** (Root Mean Squared Error)
-* **Adjusted R² Score**: Isse prioritize kiya gaya taaki unnecessary complexity ko penalize karke **Over-fitting** se bacha ja sake.
+* **MSE / RMSE** (Mean Squared Error / Root Mean Squared Error)
+* **Adjusted R² Score**: Prioritized as the primary metric to account for model complexity and prevent over-fitting.
 
-## 📂 Repository Structure
+## Repository Structure
 ```text
-├── data/               # Raw aur cleaned CSV files
-├── notebooks/          # EDA, VIF Analysis, aur Assumptions Testing
-├── src/                # Custom Gradient Descent aur Regression classes
+├── data/               # Raw and processed datasets
+├── notebooks/          # EDA, VIF Analysis, and Statistical Assumptions Testing
 └── README.md           # Project documentation
